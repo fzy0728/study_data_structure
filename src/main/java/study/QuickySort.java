@@ -31,6 +31,6 @@ public class QuickySort {
 	public static void main(String[] args){
 		int a[] = {3,2,3,6,5,65,76,6,4,23,2,5,6,65,7,3,23,234,2};
 		quicklySort(a,0,a.length-1);
-		System.out.println();
+		System.out.println(a.toString());
 	}
 }

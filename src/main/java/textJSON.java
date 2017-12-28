@@ -10,6 +10,7 @@ public class textJSON {
 
 		JSONArray className = new JSONArray();
 		className.add("高三一班");
+		className.add("高三二	班");
 		container1.put("className", className);
 		System.out.println(container1.toString());
 	}

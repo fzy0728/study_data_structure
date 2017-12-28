@@ -14,7 +14,7 @@ import net.sf.json.JSONObject;
 public class Main {
 
 	public static void main(String[] args) {
-		File file = new File("model/2.xlsx");
+		File file = new File("model/pinyin11.xlsx");
 		ArrayList<ArrayList<Object>> result = ExcelUtil.readExcel(file);
 		int positive = 0;
 		int negative = 0;
@@ -34,18 +34,20 @@ public class Main {
 			JSONObject jsonObject = JSONObject.fromObject(jsondemo);
 			System.out.println(jsonObject.get("domain"));
 			System.out.println(jsonObject.get("intent"));
-			if(domain.equals("UNKNOW")){
+			if(domain.equals("UNKNOWN")){
 				negative++;
-				if("UNKNOWN".equals(jsonObject.get("domain").toString())){
+				if("UNKNOWN".equals(jsonObject.get("domain").toString())) {
 					trueNegative++;
+					strlist.add(result.get(i).get(0).toString());
 				}
 			}
 			else{
 				positive++;
 				if(domain.equals(jsonObject.get("domain").toString())&&
-						intent.equals(jsonObject.get("intent").toString()))
-				{
-					truePositive++;}
+						intent.equals(jsonObject.get("intent").toString())) {
+					truePositive++;
+					strlist.add(result.get(i).get(0).toString());
+				}
 			}
 		}
 		falseNegative = negative-trueNegative;
@@ -64,5 +66,9 @@ public class Main {
 		System.out.println("precision: "+precision);
 		System.out.println("recall: "+recall);
 		System.out.println("accuracy: "+accuracy);
+
+		for (String s : strlist){
+			System.out.println(s);
+		}
 	}
 }
